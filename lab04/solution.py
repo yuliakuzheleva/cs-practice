@@ -23,3 +23,11 @@ def ranking(names, scores):
     for name, score in pairs:
         result.append(name)
     return result
+def above_average(names, scores):
+    sr = avarage(scores)
+    res =[]
+    for i in range(len(scores)
+                   ):
+        if scores[i]>sr:
+            res.append(names[i])
+    return res
