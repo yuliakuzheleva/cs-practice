@@ -16,3 +16,11 @@ def read_rows(lines):
             row[name[i]] = fields[i]
         row.append(row)
     return rows
+def count_types(rows):
+    counts = {}
+    for row in rows:
+        kind = row["тип"]
+        if kind not in counts:
+            counts[kind]=0
+        counts[kind]+=1
+    return counts
