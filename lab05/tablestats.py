@@ -2,7 +2,7 @@ def read_rows(lines):
     rows = []
     name = None
     for line in lines:
-        line = line.strip()
+        line = line.strip(
         if not line:
             continue
         fields = line.split(",")
@@ -24,3 +24,8 @@ def count_types(rows):
             counts[kind]=0
         counts[kind]+=1
     return counts
+def to_csv(counts):
+    res = ["тип, количество"]
+    for kind in sorted(counts):
+        lines.append(f"{kind}, {counts[kind]}")
+    return "\n".join(res) + "\n"
