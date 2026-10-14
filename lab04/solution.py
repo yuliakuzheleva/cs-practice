@@ -1,19 +1,16 @@
-names =['Аня', 'Боря', 'Вика']
-scores = [7.0, 9.0, 9.0]
+
 def winner(names, scores):
     best = 0
     for i in range(1, len(scores)):
         if scores[i]>scores[best]:
             best = i
     return names[best]
-if __name__== "__main__":
-    names =['Аня', 'Боря', 'Вика']
-    scores = [7.0, 9.0, 9.0]
-    print(winner(names, scores))
-def avarage(scores):
+
+def average(scores):
     if not scores:
         return 0.0
     return round(sum(scores)/len(scores), 2)
+
 def ranking(names, scores):
     pairs = list(zip(names, scores))
     def score(pair):
@@ -23,11 +20,18 @@ def ranking(names, scores):
     for name, score in pairs:
         result.append(name)
     return result
+
 def above_average(names, scores):
-    sr = avarage(scores)
+    sr = average(scores)
     res =[]
     for i in range(len(scores)
                    ):
         if scores[i]>sr:
             res.append(names[i])
     return res
+
+if __name__== "__main__":
+    names =['Аня', 'Боря', 'Вика']
+    scores = [7.0, 9.0, 9.0]
+    print(winner(names, scores))
+    print(average([None]))
