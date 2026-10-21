@@ -1,31 +1,40 @@
 def read_rows(lines):
     rows = []
-    name = None
+    header = None
     for line in lines:
-        line = line.strip(
+        line = line.strip()
         if not line:
             continue
-        fields = line.split(",")
-        for i in range(len(fields)):
-            fields[i] = fields[i].strip()
+        fields = [value.strip() for value in line.split(",")]
         if header is None:
-            name = fields
+            header = fields
             continue
-        row = {}
-        for i in range(len(name)):
-            row[name[i]] = fields[i]
-        row.append(row)
+        if len(fields) != len(header):
+            continue
+        row = dict(zip(header, fields))
+        rows.append(row)
     return rows
+
 def count_types(rows):
     counts = {}
     for row in rows:
-        kind = row["тип"]
-        if kind not in counts:
-            counts[kind]=0
-        counts[kind]+=1
+        kind = row.get("тип")
+        counts[kind] = counts.get(kind, 0) + 1
     return counts
+
+def total_minutes(rows,kind):
+    total = 0.0
+    for row in rows:
+        if row.get("тип") != kind:
+            continue
+        value = row.get("минуты").replace(",", ".")
+        total += float(value)
+    return round(total, 1)
+
 def to_csv(counts):
-    res = ["тип, количество"]
+    lines = ["тип,количество"]
     for kind in sorted(counts):
-        lines.append(f"{kind}, {counts[kind]}")
-    return "\n".join(res) + "\n"
+        lines.append(f"{kind},{counts[kind]}")
+    return "\n".join(lines) + "\n"
+
+
