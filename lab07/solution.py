@@ -7,5 +7,5 @@ def reshape_rows(values, width):
 def column_means(matrix):
     if not matrix:
         return[]
-    a = np.asarray(values).mean(axis=0)
+    a = np.asarray(matrix).mean(axis=0)
     return np.round(means, 6).tolist()
