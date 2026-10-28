@@ -8,4 +8,4 @@ def column_means(matrix):
     if not matrix:
         return[]
     a = np.asarray(matrix).mean(axis=0)
-    return np.round(means, 6).tolist()
+    return np.round(a, 6).tolist()
