@@ -9,7 +9,7 @@ def vector_report(values):
             "every_second": a[::2].tolist(), 
              "reversed": a[::-1].tolist()}
 def change_vector(values):
-    a = np.assaray.copy()
+    a = np.asarray.copy()
     a[2:5] = 99
     a[::2] = -1
     return a.tolist()
