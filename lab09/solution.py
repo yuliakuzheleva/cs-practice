@@ -5,11 +5,11 @@ def vector_report(values):
     a = np.asarray(values, dtype = float)
     return {"third": a[2], 
             "last": a[-1], 
-            "middle": a[2:6], 
-            "every_second": a[::2], 
-             "reversed": a[::-1]}
+            "middle": a[2:6].tolist(), 
+            "every_second": a[::2].tolist(), 
+             "reversed": a[::-1].tolist()}
 def change_vector(values):
-    a = a.assaray.copy()
+    a = np.assaray.copy()
     a[2:5] = 99
     a[::2] = -1
     return a.tolist()
